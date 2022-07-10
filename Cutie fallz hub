@@ -1,0 +1,187 @@
+-- Gui to Lua
+-- Version: 3.1
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local toptext = Instance.new("TextLabel")
+local hide = Instance.new("TextButton")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local Compasstp = Instance.new("TextButton")
+local Getcom = Instance.new("TextButton")
+local pickupfruits = Instance.new("TextButton")
+local Pickupcompass = Instance.new("TextButton")
+local toptext_2 = Instance.new("TextLabel")
+local toptext_3 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(17, 0, 0)
+Frame.Position = UDim2.new(0.304347813, 0, 0.228886172, 0)
+Frame.Size = UDim2.new(0, 503, 0, 443)
+Frame.Active = true
+Frame.Draggable = true
+
+toptext.Name = "toptext"
+toptext.Parent = Frame
+toptext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+toptext.BackgroundTransparency = 1.000
+toptext.Position = UDim2.new(0.119284295, 0, 0.0541760735, 0)
+toptext.Size = UDim2.new(0, 383, 0, 59)
+toptext.Font = Enum.Font.SourceSans
+toptext.Text = "C.H Fruit-Hub"
+toptext.TextColor3 = Color3.fromRGB(163, 163, 163)
+toptext.TextScaled = true
+toptext.TextSize = 14.000
+toptext.TextWrapped = true
+
+hide.Name = "hide"
+hide.Parent = Frame
+hide.BackgroundColor3 = Color3.fromRGB(67, 0, 0)
+hide.BorderSizePixel = 0
+hide.Position = UDim2.new(0.391650081, 0, 0.0180586912, 0)
+hide.Size = UDim2.new(0, 109, 0, 16)
+hide.Font = Enum.Font.SourceSans
+hide.Text = "Exit"
+hide.TextColor3 = Color3.fromRGB(83, 83, 83)
+hide.TextScaled = true
+hide.TextSize = 14.000
+hide.TextWrapped = true
+
+ScrollingFrame.Parent = Frame
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+ScrollingFrame.BorderColor3 = Color3.fromRGB(34, 34, 34)
+ScrollingFrame.BorderSizePixel = 10
+ScrollingFrame.Position = UDim2.new(0.0357852876, 0, 0.212189615, 0)
+ScrollingFrame.Size = UDim2.new(0, 468, 0, 336)
+
+Compasstp.Name = "Compass tp"
+Compasstp.Parent = ScrollingFrame
+Compasstp.BackgroundColor3 = Color3.fromRGB(42, 0, 0)
+Compasstp.Position = UDim2.new(0.18589744, 0, 0.0215589069, 0)
+Compasstp.Size = UDim2.new(0, 292, 0, 50)
+Compasstp.Font = Enum.Font.SourceSans
+Compasstp.Text = "Teleport to Compass"
+Compasstp.TextColor3 = Color3.fromRGB(206, 206, 206)
+Compasstp.TextScaled = true
+Compasstp.TextSize = 14.000
+Compasstp.TextWrapped = true
+Compasstp.MouseButton1Down:Connect(function()
+local Players = game:GetService("Players")
+local Lp = Players.LocalPlayer
+local Character = Lp.Character or Lp.CharacterAdded:Wait()
+local Backpack = Lp.Backpack
+if Backpack:FindFirstChild("Compass") then 
+Character.HumanoidRootPart.CFrame = CFrame.new(Backpack.Compass.Poser.Value)
+else 
+    print("No compass or compass is equipped")
+end
+end)
+
+Getcom.Name = "Getcom"
+Getcom.Parent = ScrollingFrame
+Getcom.BackgroundColor3 = Color3.fromRGB(42, 0, 0)
+Getcom.Position = UDim2.new(0.188034192, 0, 0.0915363207, 0)
+Getcom.Size = UDim2.new(0, 292, 0, 50)
+Getcom.Font = Enum.Font.SourceSans
+Getcom.Text = "Grab Compass"
+Getcom.TextColor3 = Color3.fromRGB(206, 206, 206)
+Getcom.TextScaled = true
+Getcom.TextSize = 14.000
+Getcom.TextWrapped = true
+Getcom.MouseButton1Down:Connect(function()
+	local args = {
+		[1] = "Claim1"
+	}
+
+	workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer(unpack(args))
+end)
+
+pickupfruits.Name = "pickup fruits"
+pickupfruits.Parent = ScrollingFrame
+pickupfruits.BackgroundColor3 = Color3.fromRGB(42, 0, 0)
+pickupfruits.Position = UDim2.new(0.18589744, 0, 0.160385072, 0)
+pickupfruits.Size = UDim2.new(0, 292, 0, 50)
+pickupfruits.Font = Enum.Font.SourceSans
+pickupfruits.Text = "Pickup all fruits"
+pickupfruits.TextColor3 = Color3.fromRGB(206, 206, 206)
+pickupfruits.TextScaled = true
+pickupfruits.TextSize = 14.000
+pickupfruits.TextWrapped = true
+pickupfruits.MouseButton1Down:Connect(function()
+	for i,v in pairs(game:GetService("Workspace").Trees:GetDescendants()) do
+		if v:IsA("ClickDetector") then
+			fireclickdetector(v)
+		end
+	end
+end)
+
+Pickupcompass.Name = "Pickup compass"
+Pickupcompass.Parent = ScrollingFrame
+Pickupcompass.BackgroundColor3 = Color3.fromRGB(42, 0, 0)
+Pickupcompass.Position = UDim2.new(0.188034192, 0, 0.229233846, 0)
+Pickupcompass.Size = UDim2.new(0, 292, 0, 50)
+Pickupcompass.Font = Enum.Font.SourceSans
+Pickupcompass.Text = "Pickup all compasses"
+Pickupcompass.TextColor3 = Color3.fromRGB(206, 206, 206)
+Pickupcompass.TextScaled = true
+Pickupcompass.TextSize = 14.000
+Pickupcompass.TextWrapped = true
+Pickupcompass.MouseButton1Down:Connect(function()
+	_G.Compass = true
+	local plr=game:GetService'Players'.LocalPlayer---------compass stealing
+	local find='Compass' 
+	while _G.Compass do
+		local char=plr.Character or plr.CharacterAdded:Wait()
+		local HRP=char:WaitForChild'HumanoidRootPart'
+		for i,v in next, workspace:GetChildren() do
+			local Handle=v:FindFirstChild'Handle'
+			if v:IsA'Tool' and string.find(v.Name:lower(), find:lower()) and Handle then
+				Handle.CFrame=HRP.CFrame
+			end
+		end
+		task.wait()
+	end
+end)
+
+toptext_2.Name = "toptext"
+toptext_2.Parent = ScrollingFrame
+toptext_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+toptext_2.BackgroundTransparency = 1.000
+toptext_2.Position = UDim2.new(0.0877179503, 0, 0.285137594, 0)
+toptext_2.Size = UDim2.new(0, 383, 0, 78)
+toptext_2.Font = Enum.Font.SourceSans
+toptext_2.Text = "Thinking of suggestions? join discord.gg/msFBy8JFY6"
+toptext_2.TextColor3 = Color3.fromRGB(75, 75, 75)
+toptext_2.TextScaled = true
+toptext_2.TextSize = 14.000
+toptext_2.TextWrapped = true
+
+toptext_3.Name = "toptext"
+toptext_3.Parent = Frame
+toptext_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+toptext_3.BackgroundTransparency = 1.000
+toptext_3.Position = UDim2.new(0.594433367, 0, 0.00225733966, 0)
+toptext_3.Size = UDim2.new(0, 317, 0, 29)
+toptext_3.Font = Enum.Font.SourceSans
+toptext_3.Text = "Ver 1.0"
+toptext_3.TextColor3 = Color3.fromRGB(163, 163, 163)
+toptext_3.TextScaled = true
+toptext_3.TextSize = 14.000
+toptext_3.TextWrapped = true
+
+-- Scripts:
+
+local function LHKLFJQ_fake_script() -- hide.Script 
+	local script = Instance.new('Script', hide)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.Parent.Visible = false
+	end)
+end
+coroutine.wrap(LHKLFJQ_fake_script)()
