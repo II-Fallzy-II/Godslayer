@@ -1,0 +1,13 @@
+local sex = game:GetService("Players").LocalPlayer.Character.Powers.Gas.RemoteEvent.RemoteFunction:InvokeServer()
+function gas()
+local args = {
+    [1] = sex,
+    [2] = "GasPower4",
+    [3] = "StopCharging",
+    [4] = game:GetService("Workspace").WhoStoleMyBreadBuns.Torso.CFrame,
+    [5] = workspace.IslandTown.Beach.Beach,
+    [6] = 100
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Gas.RemoteEvent:FireServer(unpack(args))
+end
